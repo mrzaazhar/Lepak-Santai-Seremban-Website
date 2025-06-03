@@ -1,78 +1,45 @@
-import { Box, Flex, Heading } from '@chakra-ui/react'
+import { useColorModeValue } from '@chakra-ui/color-mode'
+import { Box, Container, Flex, Button, Stack } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
 
 const Navbar = () => {
+  const bgColor = 'white'
+  const borderColor = useColorModeValue('gray.200', 'gray.700')
+
   return (
-    <Box bg="orange.500" px={4} py={4}>
-      <Flex maxW="1200px" mx="auto" justify="space-between" align="center">
-        <Heading as="h1" size="lg" color="white">
-          <RouterLink to="/" style={{ textDecoration: 'none', color: 'white' }}>
-            Lepak Santai Seremban
+    <Box 
+      as="nav" 
+      position="fixed" 
+      w="100%" 
+      bg={bgColor} 
+      borderBottom="1px" 
+      borderColor={borderColor}
+      zIndex="sticky"
+    >
+      <Container maxW="1200px">
+        <Flex h={16} alignItems="center" justifyContent="space-between">
+          <RouterLink to="/">
+            <Box fontSize="2xl" fontWeight="bold" color="orange.500">
+              LEPAK SANTAI
+            </Box>
           </RouterLink>
-        </Heading>
-        <Flex gap={8}>
-          <RouterLink 
-            to="/" 
-            style={{ 
-              color: 'white', 
-              fontWeight: 500,
-              textDecoration: 'none',
-              padding: '0.5rem 1rem',
-              borderRadius: '4px',
-              transition: 'background-color 0.2s'
-            }}
-            onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
-            onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-          >
-            Home
-          </RouterLink>
-          <RouterLink 
-            to="/menu" 
-            style={{ 
-              color: 'white', 
-              fontWeight: 500,
-              textDecoration: 'none',
-              padding: '0.5rem 1rem',
-              borderRadius: '4px',
-              transition: 'background-color 0.2s'
-            }}
-            onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
-            onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-          >
-            Menu
-          </RouterLink>
-          <RouterLink 
-            to="/about" 
-            style={{ 
-              color: 'white', 
-              fontWeight: 500,
-              textDecoration: 'none',
-              padding: '0.5rem 1rem',
-              borderRadius: '4px',
-              transition: 'background-color 0.2s'
-            }}
-            onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
-            onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-          >
-            About Us
-          </RouterLink>
-          <RouterLink 
-            to="/contact" 
-            style={{ 
-              color: 'white', 
-              fontWeight: 500,
-              textDecoration: 'none',
-              padding: '0.5rem 1rem',
-              borderRadius: '4px',
-              transition: 'background-color 0.2s'
-            }}
-            onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
-            onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-          >
-            Contact
-          </RouterLink>
+
+          <Stack direction="row" gap={8} alignItems="center">
+            <RouterLink to="/">
+              <Button variant="ghost">HOME</Button>
+            </RouterLink>
+            <RouterLink to="/about">
+              <Button variant="ghost">ABOUT US</Button>
+            </RouterLink>
+            <RouterLink to="/menu">
+              <Button variant="ghost">MENU</Button>
+            </RouterLink>
+            <RouterLink to="/contact">
+              <Button variant="ghost">CONTACT</Button>
+            </RouterLink>
+          </Stack>
         </Flex>
-      </Flex>
+      </Container>
     </Box>
   )
 }
